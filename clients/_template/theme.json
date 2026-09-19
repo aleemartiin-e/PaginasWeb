@@ -1,0 +1,19 @@
+{
+  "clientId": "_template",
+  "name": "Nombre del Cliente",
+  "colors": {
+    "primary": "#2563eb",
+    "secondary": "#0f172a",
+    "accent": "#f59e0b",
+    "background": "#ffffff",
+    "foreground": "#0f172a",
+    "muted": "#64748b"
+  },
+  "fonts": {
+    "heading": "var(--font-geist-sans)",
+    "body": "var(--font-geist-sans)"
+  },
+  "radius": "0.75rem",
+  "logo": "/images/_template/logo.svg",
+  "favicon": "/favicon.ico"
+}

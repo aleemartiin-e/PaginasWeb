@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Nombre del Cliente — Propuesta de valor en una frase",
+    "description": "Descripción SEO de 150-160 caracteres explicando qué hace el cliente y para quién."
+  },
+  "sections": ["hero", "benefits", "services", "testimonials", "pricing", "faq", "cta", "footer"],
+  "nav": {
+    "links": [
+      { "label": "Servicios", "href": "#servicios" },
+      { "label": "Opiniones", "href": "#opiniones" },
+      { "label": "Precios", "href": "#precios" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "ctaLabel": "Pide tu presupuesto",
+    "ctaHref": "#contacto"
+  },
+  "hero": {
+    "eyebrow": "Nuevo en tu ciudad",
+    "title": "El titular principal que resume el beneficio para el cliente",
+    "subtitle": "Un subtítulo de 1-2 frases explicando cómo se consigue ese beneficio y para quién es.",
+    "primaryCta": { "label": "Solicitar presupuesto", "href": "#contacto" },
+    "secondaryCta": { "label": "Ver servicios", "href": "#servicios" }
+  },
+  "benefits": {
+    "title": "Por qué elegirnos",
+    "subtitle": "Tres o cuatro razones concretas, no genéricas.",
+    "items": [
+      { "icon": "⚡", "title": "Rápido", "description": "Descripción breve del beneficio número uno." },
+      { "icon": "🛡️", "title": "Garantizado", "description": "Descripción breve del beneficio número dos." },
+      { "icon": "💬", "title": "Trato cercano", "description": "Descripción breve del beneficio número tres." }
+    ]
+  },
+  "services": {
+    "title": "Servicios",
+    "subtitle": "Qué ofrece el cliente, en lenguaje claro.",
+    "items": [
+      { "title": "Servicio uno", "description": "Descripción del servicio uno." },
+      { "title": "Servicio dos", "description": "Descripción del servicio dos." },
+      { "title": "Servicio tres", "description": "Descripción del servicio tres." }
+    ]
+  },
+  "testimonials": {
+    "title": "Lo que dicen nuestros clientes",
+    "items": [
+      { "quote": "Frase de un cliente satisfecho.", "author": "Nombre Apellido", "role": "Cliente" },
+      { "quote": "Otra frase real de un cliente.", "author": "Nombre Apellido", "role": "Cliente" }
+    ]
+  },
+  "pricing": {
+    "title": "Planes y precios",
+    "subtitle": "Elige la opción que mejor se adapte.",
+    "plans": [
+      {
+        "name": "Básico",
+        "price": "99€",
+        "period": "/mes",
+        "features": ["Característica 1", "Característica 2", "Característica 3"],
+        "cta": { "label": "Empezar", "href": "#contacto" }
+      },
+      {
+        "name": "Pro",
+        "price": "199€",
+        "period": "/mes",
+        "highlighted": true,
+        "features": ["Todo lo del plan Básico", "Característica adicional 1", "Característica adicional 2"],
+        "cta": { "label": "Empezar", "href": "#contacto" }
+      }
+    ]
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      { "question": "¿Pregunta frecuente uno?", "answer": "Respuesta clara y breve." },
+      { "question": "¿Pregunta frecuente dos?", "answer": "Respuesta clara y breve." }
+    ]
+  },
+  "cta": {
+    "title": "¿Hablamos de tu proyecto?",
+    "subtitle": "Respuesta en menos de 24 horas.",
+    "button": { "label": "Contactar ahora", "href": "#contacto" }
+  },
+  "footer": {
+    "companyName": "Nombre del Cliente",
+    "tagline": "Frase corta de cierre.",
+    "links": [
+      { "label": "Aviso legal", "href": "/legal" },
+      { "label": "Privacidad", "href": "/privacidad" }
+    ],
+    "contact": {
+      "email": "hola@cliente.com",
+      "phone": "+34 600 000 000",
+      "whatsapp": "https://wa.me/34600000000"
+    }
+  }
+}
