@@ -4,19 +4,19 @@
  * antes de publicar la web en producción.
  */
 export const site = {
-  name: "Arbor", // PLACEHOLDER: nombre definitivo de la agencia
-  legalName: "Arbor Digital Studio S.L.", // PLACEHOLDER: razón social
-  tagline: "Diseño y tecnología para negocios que quieren crecer",
+  name: "DelaCruz Agency",
+  legalName: "DelaCruz Agency S.L.", // PLACEHOLDER: razón social
+  tagline: "Llevamos tu negocio al mundo digital",
   description:
     "Agencia digital especializada en diseño web, e-commerce, SEO e inteligencia artificial para pymes y profesionales que quieren conseguir más clientes por internet.",
-  url: "https://www.arbor-agencia.com", // PLACEHOLDER: dominio real
-  email: "hola@arbor-agencia.com", // PLACEHOLDER
+  url: "https://www.delacruzagency.com", // PLACEHOLDER: dominio real
+  email: "hola@delacruzagency.com", // PLACEHOLDER
   phone: "+34 600 000 000", // PLACEHOLDER
   address: "Málaga, España", // PLACEHOLDER
   cif: "B00000000", // PLACEHOLDER
   social: {
-    instagram: "https://instagram.com/arbor.agencia", // PLACEHOLDER
-    linkedin: "https://linkedin.com/company/arbor-agencia", // PLACEHOLDER
+    instagram: "https://instagram.com/delacruz.agency", // PLACEHOLDER
+    linkedin: "https://linkedin.com/company/delacruz-agency", // PLACEHOLDER
   },
 } as const;
 
