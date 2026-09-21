@@ -15,9 +15,9 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "#0a0f0d",
+          background: "#120c08",
           backgroundImage:
-            "radial-gradient(ellipse at top left, rgba(62,207,142,0.25), transparent 60%)",
+            "radial-gradient(ellipse at top left, rgba(255,122,41,0.28), transparent 60%)",
         }}
       >
         <div
@@ -33,18 +33,18 @@ export default async function Image() {
               width: 14,
               height: 14,
               borderRadius: 999,
-              background: "#3ecf8e",
+              background: "#ff7a29",
               display: "flex",
             }}
           />
-          <span style={{ color: "#8b9a93", fontSize: 28, letterSpacing: 4 }}>
+          <span style={{ color: "#b3a08b", fontSize: 28, letterSpacing: 4 }}>
             {site.name.toUpperCase()}
           </span>
         </div>
         <div
           style={{
             display: "flex",
-            color: "#f2f5f3",
+            color: "#f7f1e6",
             fontSize: 64,
             fontWeight: 600,
             lineHeight: 1.15,

@@ -1,3 +1,5 @@
+import { site } from "@/content/site";
+
 export type FaqItem = {
   question: string;
   answer: string;
@@ -5,43 +7,41 @@ export type FaqItem = {
 
 export const faqItems: FaqItem[] = [
   {
-    question: "¿Cuánto cuesta una web?",
+    question: "¿Necesito reservar mesa?",
     answer:
-      "Depende del alcance del proyecto: una landing page no cuesta lo mismo que un ecommerce completo. Tras analizar tus necesidades te enviamos un presupuesto cerrado, sin sorpresas.",
+      "Recomendamos reservar, sobre todo en fin de semana y temporada alta, para asegurarte mesa. Puedes hacerlo desde el formulario de esta web o llamando directamente.",
   },
   {
-    question: "¿Cuánto tarda el proyecto?",
-    answer:
-      "Una landing page suele estar lista en 1-2 semanas. Una web corporativa o un ecommerce puede llevar entre 3 y 8 semanas según su complejidad.",
+    question: "¿Cuál es el horario del restaurante?",
+    answer: `Abrimos ${site.hours}. El horario puede variar en días señalados; te recomendamos confirmarlo por teléfono si vienes en una fecha especial.`,
   },
   {
-    question: "¿Trabajáis con empresas pequeñas?",
+    question: "¿Tenéis terraza?",
     answer:
-      "Sí. Trabajamos con pymes, autónomos y negocios locales que quieren dar el salto a una presencia digital profesional, adaptando el proyecto a su presupuesto real.",
+      "Sí, contamos con una zona techada y una terraza exterior en pleno centro de Nerja, ideal para comer o cenar al aire libre.",
   },
   {
-    question: "¿Incluís SEO?",
+    question: "¿Tenéis opciones vegetarianas?",
     answer:
-      "Sí, toda web que construimos incluye SEO técnico de base (estructura, metadatos, rendimiento). El SEO de contenido y posicionamiento avanzado se puede contratar como servicio adicional.",
+      "Sí, nuestra carta incluye verduras a la brasa, guarniciones caseras y otras opciones sin carne. Consulta con el equipo en sala si tienes alguna alergia o intolerancia.",
   },
   {
-    question: "¿Podéis mejorar mi web actual?",
+    question: "¿Podemos venir en grupo o celebrar un evento?",
     answer:
-      "Sí. Auditamos tu web actual y te proponemos mejoras concretas de diseño, velocidad, SEO o conversión, sin necesidad de empezar desde cero si no es necesario.",
+      "Sí, adaptamos mesas y menús para grupos y celebraciones. Escríbenos con antelación indicando el número de personas y la fecha.",
   },
   {
-    question: "¿Podéis mantener la web después de publicarla?",
+    question: "¿Admitís animales?",
     answer:
-      "Sí, ofrecemos planes de mantenimiento para actualizaciones, copias de seguridad, pequeños cambios de contenido y soporte técnico continuo.",
+      "Sí, son bienvenidos en la terraza. Consúltanos si tienes alguna necesidad especial al reservar.",
   },
   {
-    question: "¿Trabajáis con ecommerce?",
-    answer:
-      "Sí, diseñamos y desarrollamos tiendas online completas, incluyendo catálogo, pagos, envíos y optimización de conversión en el proceso de compra.",
+    question: "¿Dónde estáis ubicados?",
+    answer: `Estamos en ${site.address}, a pocos minutos a pie del Balcón de Europa.`,
   },
   {
-    question: "¿Podéis integrar inteligencia artificial?",
+    question: "¿Hacéis comida para llevar?",
     answer:
-      "Sí, integramos soluciones de IA como asistentes conversacionales, generación de contenido o automatización de procesos internos adaptadas a tu negocio.",
+      "Sí, puedes hacer tu pedido para llevar por teléfono o WhatsApp con la antelación necesaria según el plato.",
   },
 ];

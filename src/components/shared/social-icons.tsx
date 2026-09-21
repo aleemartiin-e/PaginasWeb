@@ -21,7 +21,7 @@ export function InstagramIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-export function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
+export function FacebookIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -31,11 +31,8 @@ export function LinkedinIcon(props: SVGProps<SVGSVGElement>) {
       aria-hidden="true"
       {...props}
     >
-      <rect x="3" y="3" width="18" height="18" rx="3" />
-      <line x1="8" y1="11" x2="8" y2="16" />
-      <line x1="8" y1="8" x2="8" y2="8" />
-      <path d="M12 16v-3a2 2 0 0 1 4 0v3" />
-      <line x1="16" y1="11" x2="16" y2="16" />
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <path d="M14.5 8.5h-1.5a1.5 1.5 0 0 0-1.5 1.5v1.5h3l-.5 2.5h-2.5V19" />
     </svg>
   );
 }

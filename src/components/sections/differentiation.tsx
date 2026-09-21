@@ -1,32 +1,32 @@
-import { Gauge, Layers, Wrench, Target } from "lucide-react";
+import { Flame, Leaf, Users, MapPinned } from "lucide-react";
 import { Container } from "@/components/shared/container";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { AnimatedReveal } from "@/components/shared/animated-reveal";
 
 const points = [
   {
-    icon: Layers,
-    title: "Un proceso documentado",
+    icon: Flame,
+    title: "Todo a la brasa de carbón",
     description:
-      "Cada fase del proyecto está definida: sabes qué se hace, cuándo y por qué en cada momento.",
+      "Carnes, pescados y verduras cocinados al fuego, con el sabor que solo da el carbón.",
   },
   {
-    icon: Gauge,
-    title: "Tecnología moderna y rápida",
+    icon: Leaf,
+    title: "Producto fresco del día",
     description:
-      "Construimos con las mismas herramientas que usan los productos digitales más rápidos del mercado.",
+      "Trabajamos con proveedores locales y renovamos la carta según el producto de temporada.",
   },
   {
-    icon: Wrench,
-    title: "Personalización real",
+    icon: Users,
+    title: "Ambiente familiar",
     description:
-      "No partimos de plantillas cerradas: cada web se adapta a tu negocio, tu marca y tu público.",
+      "Un sitio pensado para venir en grupo, en pareja o con niños, sin prisas.",
   },
   {
-    icon: Target,
-    title: "Orientación a resultados",
+    icon: MapPinned,
+    title: "En pleno centro de Nerja",
     description:
-      "Cada decisión de diseño y contenido se toma pensando en la conversión, no solo en la estética.",
+      "A pocos pasos del Balcón de Europa, con terraza para disfrutar del buen tiempo.",
   },
 ];
 
@@ -35,9 +35,9 @@ export function Differentiation() {
     <section className="border-t border-border bg-background py-24 md:py-32">
       <Container className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
         <SectionHeading
-          eyebrow="Diferenciación"
-          title="Por qué trabajar con nosotros"
-          description="No lo decimos nosotros: se ve en cómo trabajamos."
+          eyebrow="Por qué elegirnos"
+          title="Más que un grill, un sitio para volver"
+          description="No lo decimos nosotros: se nota en cada plato."
         />
 
         <div className="grid gap-6 sm:grid-cols-2">

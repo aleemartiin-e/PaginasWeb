@@ -4,25 +4,30 @@
  * antes de publicar la web en producción.
  */
 export const site = {
-  name: "Arbor", // PLACEHOLDER: nombre definitivo de la agencia
-  legalName: "Arbor Digital Studio S.L.", // PLACEHOLDER: razón social
-  tagline: "Diseño y tecnología para negocios que quieren crecer",
+  name: "Bruno's Grill Nerja",
+  legalName: "Bruno's Grill Nerja S.L.", // PLACEHOLDER: razón social real
+  tagline: "Grill & Cocktail Bar en el corazón de Nerja",
   description:
-    "Agencia digital especializada en diseño web, e-commerce, SEO e inteligencia artificial para pymes y profesionales que quieren conseguir más clientes por internet.",
-  url: "https://www.arbor-agencia.com", // PLACEHOLDER: dominio real
-  email: "hola@arbor-agencia.com", // PLACEHOLDER
+    "Carnes y pescados a la brasa, hamburguesas gourmet y cócteles de autor en pleno centro de Nerja. Terraza, ambiente familiar y producto fresco cada día.",
+  url: "https://www.brunosgrillnerja.com", // PLACEHOLDER: dominio real
+  email: "info@brunosgrillnerja.com", // PLACEHOLDER
   phone: "+34 600 000 000", // PLACEHOLDER
-  address: "Málaga, España", // PLACEHOLDER
+  whatsapp: "+34 600 000 000", // PLACEHOLDER
+  address: "Nerja, Málaga, España", // PLACEHOLDER: dirección exacta
   cif: "B00000000", // PLACEHOLDER
+  priceRange: "€€",
+  cuisine: "Grill, cocina mediterránea, cócteles",
+  hours: "Todos los días, 13:00–00:00", // PLACEHOLDER: horario real
   social: {
-    instagram: "https://instagram.com/arbor.agencia", // PLACEHOLDER
-    linkedin: "https://linkedin.com/company/arbor-agencia", // PLACEHOLDER
+    facebook: "https://www.facebook.com/BrunosGrillNerja", // PLACEHOLDER: URL real de Facebook
+    instagram: "https://instagram.com/brunosgrillnerja", // PLACEHOLDER: URL real de Instagram
   },
 } as const;
 
 export const nav = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Proceso", href: "#proceso" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "FAQ", href: "#faq" },
+  { label: "La carta", href: "#carta" },
+  { label: "Nosotros", href: "#nosotros" },
+  { label: "Galería", href: "#galeria" },
+  { label: "Opiniones", href: "#opiniones" },
+  { label: "Reservas", href: "#reservas" },
 ] as const;

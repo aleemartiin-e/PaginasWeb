@@ -5,12 +5,12 @@ import { TestimonialCard } from "@/components/cards/testimonial-card";
 
 export function Testimonials() {
   return (
-    <section className="border-t border-border bg-background py-24 md:py-32">
+    <section id="opiniones" className="border-t border-border bg-background py-24 md:py-32">
       <Container>
         <SectionHeading
-          eyebrow="Testimonios"
-          title="Lo que dirán nuestros clientes"
-          description="En cuanto completemos los primeros proyectos, esta sección mostrará opiniones reales verificadas."
+          eyebrow="Opiniones"
+          title="Lo que dicen quienes ya han venido"
+          description="En cuanto recopilemos las primeras reseñas verificadas, esta sección mostrará opiniones reales de nuestros clientes."
         />
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

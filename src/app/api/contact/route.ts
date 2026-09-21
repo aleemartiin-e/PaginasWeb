@@ -25,9 +25,9 @@ export async function POST(request: Request) {
   }
 
   // PLACEHOLDER: aquí se debe integrar el envío real (email transaccional,
-  // CRM, Slack, etc.). De momento se registra en el log del servidor.
-  const { name, email, phone, projectType, message } = parsed.data;
-  console.log("[contacto] Nuevo lead:", { name, email, phone, projectType, message });
+  // CRM, WhatsApp Business, etc.). De momento se registra en el log del servidor.
+  const { name, email, phone, partySize, message } = parsed.data;
+  console.log("[reservas] Nueva solicitud de reserva:", { name, email, phone, partySize, message });
 
   return NextResponse.json({ success: true });
 }

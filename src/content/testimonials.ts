@@ -7,29 +7,30 @@ export type Testimonial = {
 };
 
 /**
- * PLACEHOLDER — no son testimonios reales.
- * Sustituir por opiniones reales de clientes en cuanto se recopilen.
+ * PLACEHOLDER — no son opiniones reales.
+ * Sustituir por reseñas reales (Google, Facebook, TripAdvisor) en cuanto
+ * se recopilen, idealmente con el permiso de cada cliente.
  */
 export const testimonials: Testimonial[] = [
   {
     id: "placeholder-1",
     author: "Nombre del cliente",
-    role: "Cargo, Empresa",
-    quote: "Aquí aparecerá la opinión real de un cliente sobre el proyecto.",
+    role: "Reseña de Google",
+    quote: "Aquí aparecerá la opinión real de un cliente sobre su visita.",
     isPlaceholder: true,
   },
   {
     id: "placeholder-2",
     author: "Nombre del cliente",
-    role: "Cargo, Empresa",
-    quote: "Aquí aparecerá la opinión real de un cliente sobre el proyecto.",
+    role: "Reseña de Facebook",
+    quote: "Aquí aparecerá la opinión real de un cliente sobre su visita.",
     isPlaceholder: true,
   },
   {
     id: "placeholder-3",
     author: "Nombre del cliente",
-    role: "Cargo, Empresa",
-    quote: "Aquí aparecerá la opinión real de un cliente sobre el proyecto.",
+    role: "Reseña de TripAdvisor",
+    quote: "Aquí aparecerá la opinión real de un cliente sobre su visita.",
     isPlaceholder: true,
   },
 ];

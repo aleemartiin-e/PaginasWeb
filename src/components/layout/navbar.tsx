@@ -60,10 +60,10 @@ export function Navbar() {
           <Button
             size="sm"
             onClick={() =>
-              document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("reservas")?.scrollIntoView({ behavior: "smooth" })
             }
           >
-            Solicitar presupuesto
+            Reservar mesa
           </Button>
         </div>
 
@@ -94,10 +94,10 @@ export function Navbar() {
             <Button
               onClick={() => {
                 setIsOpen(false);
-                document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+                document.getElementById("reservas")?.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Solicitar presupuesto
+              Reservar mesa
             </Button>
           </Container>
         </div>

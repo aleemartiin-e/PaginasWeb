@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import type { Testimonial } from "@/content/testimonials";
 import { AnimatedReveal } from "@/components/shared/animated-reveal";
 
@@ -14,7 +14,11 @@ export function TestimonialCard({
       delay={delay}
       className="flex flex-col gap-6 rounded-2xl border border-dashed border-border bg-background p-8"
     >
-      <Quote className="h-6 w-6 text-primary/60" strokeWidth={1.5} />
+      <div className="flex gap-1" aria-hidden="true">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <Star key={index} className="h-4 w-4 fill-primary/60 text-primary/60" strokeWidth={1.5} />
+        ))}
+      </div>
       <p className="text-sm italic leading-relaxed text-muted">
         “{testimonial.quote}”
       </p>

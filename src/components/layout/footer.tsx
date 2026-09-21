@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { InstagramIcon, LinkedinIcon } from "@/components/shared/social-icons";
+import { InstagramIcon, FacebookIcon } from "@/components/shared/social-icons";
 import { site, nav } from "@/content/site";
-import { services } from "@/content/services";
+import { menuCategories } from "@/content/menu";
 import { Container } from "@/components/shared/container";
 
 export function Footer() {
@@ -26,13 +26,13 @@ export function Footer() {
               <InstagramIcon className="h-4 w-4" />
             </a>
             <a
-              href={site.social.linkedin}
+              href={site.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              aria-label="Facebook"
               className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors hover:border-primary hover:text-primary"
             >
-              <LinkedinIcon className="h-4 w-4" />
+              <FacebookIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
@@ -57,16 +57,16 @@ export function Footer() {
 
         <div className="flex flex-col gap-4">
           <h3 className="font-mono text-xs uppercase tracking-widest text-muted">
-            Servicios
+            La carta
           </h3>
           <ul className="flex flex-col gap-3">
-            {services.map((service) => (
-              <li key={service.id}>
+            {menuCategories.map((item) => (
+              <li key={item.id}>
                 <a
-                  href="#servicios"
+                  href="#carta"
                   className="text-sm text-foreground/80 transition-colors hover:text-primary"
                 >
-                  {service.name}
+                  {item.name}
                 </a>
               </li>
             ))}

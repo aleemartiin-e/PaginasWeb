@@ -4,18 +4,20 @@ import { faqItems } from "@/content/faq";
 export function OrganizationJsonLd() {
   const data = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "Restaurant",
     name: site.name,
     legalName: site.legalName,
     url: site.url,
     email: site.email,
     telephone: site.phone,
     description: site.description,
+    servesCuisine: site.cuisine,
+    priceRange: site.priceRange,
     address: {
       "@type": "PostalAddress",
       addressLocality: site.address,
     },
-    sameAs: [site.social.instagram, site.social.linkedin],
+    sameAs: [site.social.instagram, site.social.facebook],
   };
 
   return (

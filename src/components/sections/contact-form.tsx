@@ -11,14 +11,11 @@ import { AnimatedReveal } from "@/components/shared/animated-reveal";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-const projectTypes: { value: ContactFormValues["projectType"]; label: string }[] = [
-  { value: "web-nueva", label: "Web nueva" },
-  { value: "rediseno", label: "Rediseño de mi web actual" },
-  { value: "landing", label: "Landing page" },
-  { value: "ecommerce", label: "Ecommerce" },
-  { value: "seo", label: "SEO" },
-  { value: "automatizacion", label: "Automatización / IA" },
-  { value: "otro", label: "Otro" },
+const partySizes: { value: ContactFormValues["partySize"]; label: string }[] = [
+  { value: "1-2", label: "1-2 personas" },
+  { value: "3-4", label: "3-4 personas" },
+  { value: "5-8", label: "5-8 personas" },
+  { value: "9+", label: "9 o más personas" },
 ];
 
 export function ContactForm() {
@@ -35,7 +32,7 @@ export function ContactForm() {
       name: String(formData.get("name") ?? ""),
       email: String(formData.get("email") ?? ""),
       phone: String(formData.get("phone") ?? ""),
-      projectType: String(formData.get("projectType") ?? "otro"),
+      partySize: String(formData.get("partySize") ?? "1-2"),
       message: String(formData.get("message") ?? ""),
       company_website: String(formData.get("company_website") ?? ""),
     };
@@ -76,10 +73,10 @@ export function ContactForm() {
       <AnimatedReveal className="flex flex-col items-center gap-4 rounded-2xl border border-primary/30 bg-accent-soft p-10 text-center">
         <CheckCircle2 className="h-10 w-10 text-primary" strokeWidth={1.5} />
         <h3 className="font-display text-xl font-semibold text-foreground">
-          Mensaje recibido
+          Solicitud recibida
         </h3>
         <p className="text-sm text-muted">
-          Gracias por escribirnos. Te responderemos en menos de 24-48 horas laborables.
+          Gracias por tu reserva. Te confirmaremos la disponibilidad lo antes posible.
         </p>
       </AnimatedReveal>
     );
@@ -115,22 +112,22 @@ export function ContactForm() {
           <Field label="Teléfono (opcional)" htmlFor="phone">
             <Input id="phone" name="phone" type="tel" placeholder="+34 600 000 000" autoComplete="tel" />
           </Field>
-          <Field label="Tipo de proyecto" htmlFor="projectType">
-            <Select id="projectType" name="projectType" defaultValue="web-nueva">
-              {projectTypes.map((type) => (
-                <option key={type.value} value={type.value}>
-                  {type.label}
+          <Field label="Número de comensales" htmlFor="partySize">
+            <Select id="partySize" name="partySize" defaultValue="1-2">
+              {partySizes.map((size) => (
+                <option key={size.value} value={size.value}>
+                  {size.label}
                 </option>
               ))}
             </Select>
           </Field>
         </div>
 
-        <Field label="Cuéntanos sobre tu proyecto" htmlFor="message" error={errors.message}>
+        <Field label="Fecha, hora y comentarios" htmlFor="message" error={errors.message}>
           <Textarea
             id="message"
             name="message"
-            placeholder="Ej: Tengo una peluquería y necesito una web con reservas online..."
+            placeholder="Ej: Viernes a las 21:00, mesa en terraza si es posible..."
           />
         </Field>
 
@@ -148,7 +145,7 @@ export function ContactForm() {
               Enviando...
             </>
           ) : (
-            "Solicitar presupuesto"
+            "Enviar reserva"
           )}
         </Button>
       </form>
