@@ -18,7 +18,7 @@ export function Process() {
             <AnimatedReveal
               key={step.number}
               delay={index * 0.05}
-              className="flex flex-col gap-4 rounded-2xl border border-border bg-background p-8"
+              className="flex flex-col gap-4 rounded-2xl border border-border bg-background p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-black/20"
             >
               <span className="font-mono text-sm text-primary">{step.number}</span>
               <h3 className="font-display text-xl font-semibold text-foreground">

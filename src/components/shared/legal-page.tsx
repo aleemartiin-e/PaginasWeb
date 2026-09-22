@@ -14,7 +14,7 @@ export function LegalPage({
       <Container className="max-w-3xl">
         <Link
           href="/"
-          className="mb-10 inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-primary"
+          className="mb-10 inline-flex items-center gap-2 text-sm text-muted transition-all duration-300 hover:-translate-x-0.5 hover:text-primary"
         >
           <ArrowLeft className="h-4 w-4" />
           Volver al inicio

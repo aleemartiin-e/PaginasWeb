@@ -5,9 +5,9 @@ export function ServiceCard({ service, delay = 0 }: { service: Service; delay?: 
   return (
     <AnimatedReveal
       delay={delay}
-      className="group flex flex-col gap-6 rounded-2xl border border-border bg-surface p-8 transition-colors duration-300 hover:border-primary/40"
+      className="group flex flex-col gap-6 rounded-2xl border border-border bg-surface p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-xl hover:shadow-black/20"
     >
-      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft transition-colors duration-300 group-hover:bg-primary/15">
+      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/15">
         <service.icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
       </div>
 

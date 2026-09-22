@@ -51,9 +51,12 @@ export function Problem() {
             <AnimatedReveal
               key={problem.title}
               delay={index * 0.05}
-              className="flex flex-col gap-4 bg-background p-8"
+              className="group flex flex-col gap-4 bg-background p-8 transition-colors duration-300 hover:bg-surface"
             >
-              <problem.icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+              <problem.icon
+                className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110"
+                strokeWidth={1.5}
+              />
               <h3 className="font-display text-lg font-semibold text-foreground">
                 {problem.title}
               </h3>

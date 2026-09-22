@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { site, nav } from "@/content/site";
 import { Button } from "@/components/ui/button";
@@ -38,7 +39,7 @@ export function Navbar() {
       <Container className="flex h-20 items-center justify-between">
         <Link
           href="/"
-          className="font-display text-xl font-semibold tracking-tight text-foreground"
+          className="font-display text-xl font-semibold tracking-tight text-foreground transition-transform duration-300 hover:scale-[1.03]"
           onClick={() => setIsOpen(false)}
         >
           {site.name}
@@ -49,7 +50,7 @@ export function Navbar() {
             <a
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-muted transition-colors hover:text-foreground"
+              className="text-sm font-medium text-muted transition-all duration-300 hover:-translate-y-0.5 hover:text-foreground"
             >
               {item.label}
             </a>
@@ -69,7 +70,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="flex h-10 w-10 items-center justify-center text-foreground md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-full text-foreground transition-all duration-300 hover:bg-surface active:scale-90 md:hidden"
           aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={isOpen}
           onClick={() => setIsOpen((v) => !v)}
@@ -78,30 +79,38 @@ export function Navbar() {
         </button>
       </Container>
 
-      {isOpen ? (
-        <div className="border-t border-border bg-background md:hidden">
-          <Container className="flex flex-col gap-6 py-8">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="text-lg font-medium text-foreground"
+      <AnimatePresence>
+        {isOpen ? (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden border-t border-border bg-background md:hidden"
+          >
+            <Container className="flex flex-col gap-6 py-8">
+              {nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-lg font-medium text-foreground transition-colors duration-300 hover:text-primary"
+                >
+                  {item.label}
+                </a>
+              ))}
+              <Button
+                onClick={() => {
+                  setIsOpen(false);
+                  document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
+                }}
               >
-                {item.label}
-              </a>
-            ))}
-            <Button
-              onClick={() => {
-                setIsOpen(false);
-                document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Solicitar presupuesto
-            </Button>
-          </Container>
-        </div>
-      ) : null}
+                Solicitar presupuesto
+              </Button>
+            </Container>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }
