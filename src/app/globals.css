@@ -81,3 +81,22 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Tema claro (navy/blanco) para la web de Idea Centro Dental, aislado del
+ * tema oscuro de Arbor. Redefine los mismos tokens dentro de este scope:
+ * los descendientes que usan las utilidades bg-background, text-foreground,
+ * bg-primary, etc. heredan estos valores en cascada.
+ */
+.theme-dental {
+  --background: #ffffff;
+  --surface: #f4f6f9;
+  --surface-elevated: #ffffff;
+  --foreground: #16232f;
+  --muted: #5b6b7c;
+  --primary: #163a5e;
+  --primary-dark: #0f2942;
+  --primary-foreground: #ffffff;
+  --accent-soft: #e8f0f8;
+  --border: #dde3ea;
+}
