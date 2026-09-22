@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { motion } from "framer-motion";
 import { CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -74,7 +75,13 @@ export function ContactForm() {
   if (status === "success") {
     return (
       <AnimatedReveal className="flex flex-col items-center gap-4 rounded-2xl border border-primary/30 bg-accent-soft p-10 text-center">
-        <CheckCircle2 className="h-10 w-10 text-primary" strokeWidth={1.5} />
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <CheckCircle2 className="h-10 w-10 text-primary" strokeWidth={1.5} />
+        </motion.div>
         <h3 className="font-display text-xl font-semibold text-foreground">
           Mensaje recibido
         </h3>

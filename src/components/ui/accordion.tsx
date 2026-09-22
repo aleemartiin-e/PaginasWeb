@@ -25,7 +25,7 @@ function AccordionItem({ question, answer, isOpen, onToggle, id }: AccordionItem
           aria-expanded={isOpen}
           aria-controls={panelId}
           onClick={onToggle}
-          className="flex w-full items-center justify-between gap-4 py-6 text-left text-base font-medium text-foreground transition-colors hover:text-primary md:text-lg"
+          className="flex w-full items-center justify-between gap-4 py-6 text-left text-base font-medium text-foreground transition-all duration-300 hover:translate-x-0.5 hover:text-primary md:text-lg"
         >
           <span>{question}</span>
           <ChevronDown

@@ -12,9 +12,12 @@ export function TestimonialCard({
   return (
     <AnimatedReveal
       delay={delay}
-      className="flex flex-col gap-6 rounded-2xl border border-dashed border-border bg-background p-8"
+      className="group flex flex-col gap-6 rounded-2xl border border-dashed border-border bg-background p-8 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-black/10"
     >
-      <Quote className="h-6 w-6 text-primary/60" strokeWidth={1.5} />
+      <Quote
+        className="h-6 w-6 text-primary/60 transition-transform duration-300 group-hover:scale-110"
+        strokeWidth={1.5}
+      />
       <p className="text-sm italic leading-relaxed text-muted">
         “{testimonial.quote}”
       </p>

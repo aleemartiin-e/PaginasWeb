@@ -14,6 +14,8 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 480px;
+
   --color-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
@@ -53,10 +55,20 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Compensa la navbar sticky (h-20 = 5rem) al saltar a un ancla interna */
+section[id] {
+  scroll-margin-top: 5rem;
 }
 
 ::selection {
@@ -73,6 +85,10 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {

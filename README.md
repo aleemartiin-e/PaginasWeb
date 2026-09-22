@@ -1,7 +1,7 @@
-# Arbor — Web de agencia digital
+# DelaCruz Agency — Web de agencia digital
 
-Web oficial de la agencia (nombre placeholder: **Arbor**), construida como
-base reutilizable para futuras webs de clientes. Next.js 16 (App Router) +
+Web oficial de la agencia **DelaCruz Agency**, construida como base
+reutilizable para futuras webs de clientes. Next.js 16 (App Router) +
 TypeScript + Tailwind CSS v4 + Framer Motion.
 
 ## Requisitos

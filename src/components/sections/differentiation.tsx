@@ -42,8 +42,15 @@ export function Differentiation() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           {points.map((point, index) => (
-            <AnimatedReveal key={point.title} delay={index * 0.05} className="flex flex-col gap-3">
-              <point.icon className="h-5 w-5 text-primary" strokeWidth={1.5} />
+            <AnimatedReveal
+              key={point.title}
+              delay={index * 0.05}
+              className="group flex flex-col gap-3"
+            >
+              <point.icon
+                className="h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110"
+                strokeWidth={1.5}
+              />
               <h3 className="font-display text-base font-semibold text-foreground">
                 {point.title}
               </h3>

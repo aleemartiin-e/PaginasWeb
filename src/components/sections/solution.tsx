@@ -26,9 +26,12 @@ export function Solution() {
               {pillars.map((pillar) => (
                 <div
                   key={pillar.label}
-                  className="flex flex-col items-center gap-3 rounded-xl border border-border bg-surface p-6"
+                  className="group flex flex-col items-center gap-3 rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40"
                 >
-                  <pillar.icon className="h-6 w-6 text-primary" strokeWidth={1.5} />
+                  <pillar.icon
+                    className="h-6 w-6 text-primary transition-transform duration-300 group-hover:scale-110"
+                    strokeWidth={1.5}
+                  />
                   <span className="font-mono text-xs uppercase tracking-widest text-muted">
                     {pillar.label}
                   </span>
