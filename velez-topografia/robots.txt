@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://veleztopografia.com/sitemap.xml
