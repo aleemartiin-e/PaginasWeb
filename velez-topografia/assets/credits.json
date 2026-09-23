@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "src": "assets/img/hero.webp",
+    "title": "Farming Fields",
+    "creator": "World Travel Adventures",
+    "creator_url": "https://stocksnap.io",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/farming-fields-OGUY6JXNBC",
+    "source": "stocksnap"
+  },
+  "drone": {
+    "src": "assets/img/drone.webp",
+    "title": "Coastal Island",
+    "creator": "JJ Skys the Limit",
+    "creator_url": "http://jjskysthelimit.com",
+    "license": "cc0",
+    "license_version": "1.0",
+    "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "foreign_landing_url": "https://stocksnap.io/photo/coastal-island-PNFMDTMB4P",
+    "source": "stocksnap"
+  }
+}
