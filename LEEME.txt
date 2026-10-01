@@ -1,0 +1,26 @@
+ADRIA MAYA — WEB ESTÁTICA (lista para Hostinger)
+=================================================
+
+SUBIR A HOSTINGER
+1. hPanel > Archivos > Administrador de archivos > public_html
+2. Sube TODO el contenido de esta carpeta (no la carpeta en sí).
+   Incluye el archivo oculto .htaccess: evita que Hostinger sirva
+   versiones viejas del CSS/JS durante 30 días.
+3. Cada vez que cambies styles.css o main.js, sube el número ?v=20261002
+   en index.html (por ejemplo a ?v=20261015).
+
+CAMBIAR FOTOS
+- Están en assets/img/ (formato .webp). Son recortes de capturas de
+  Instagram: si Adria te pasa las fotos originales, conviértelas a .webp
+  y sustitúyelas con el MISMO nombre de archivo.
+
+QUÉ HAY DENTRO
+- index.html ....... toda la página
+- styles.css ....... estilos
+- main.js .......... efectos (campo de puntos, aguja 3D, esfera, galería)
+- lib/ ............. GSAP, ScrollTrigger y Three.js (en local, sin CDN)
+- assets/fonts/ .... tipografías en local (licencia OFL incluida)
+- assets/img/ ...... fotos
+
+Fuentes: Big Shoulders Display, JetBrains Mono y Pinyon Script (SIL OFL).
+Librerías: GSAP 3.12.5, Three.js r159 (MIT).
