@@ -60,36 +60,157 @@
   function initSplash() {
     var el = $("[data-splash]");
     if (!el) { startIntro(); return; }
+    var svg = $("[data-splash-svg]", el), goo = $("[data-ink]", el), needle = $("[data-needle]", el);
+    var bleed = $("[data-bleed]", el), shadow = $("[data-shadow]", el), flood = $("[data-flood]", el);
     var cnt = $("[data-splash-count]", el);
-    var shown = 0, target = 30, done = false, t0 = performance.now();
+    var NS = "http://www.w3.org/2000/svg";
+    var TX = 200, TY = 214, FLOOR = 452, G = 2900;
+    var rnd = function (a, b) { return a + Math.random() * (b - a); };
+    function mk(tag) { var n = document.createElementNS(NS, tag); if (goo) goo.appendChild(n); return n; }
+    function at(n, o) { for (var k in o) n.setAttribute(k, typeof o[k] === "number" ? o[k].toFixed(2) : o[k]); }
 
-    function finish() {
-      if (done) return;
-      done = true;
+    var bead = mk("circle"), neck = [], i;
+    for (i = 0; i < 6; i++) neck.push(mk("circle"));
+    var pool = mk("ellipse"), drop = mk("ellipse");
+    var bits = [];
+
+    var S = {
+      t: 0, last: performance.now(), shown: 0, target: 30, loaded: false,
+      done: false, flooding: false, landed: 0,
+      phase: "wait", pt: 0, form: 0.62, R: 13, y: TY, vy: 0, r: 0,
+      beadR: 3.2, beadV: 0, neckRet: 1,
+      poolR: 0, poolV: 0, poolT: 0, bleedR: 0, needleOut: 0
+    };
+
+    function spawnSplash(R) {
+      var n = 9;
+      for (var k = 0; k < n; k++) {
+        var side = k % 2 ? 1 : -1, z = rnd(-1, 1);
+        bits.push({ el: mk("ellipse"), x: TX + side * rnd(2, 10), y: FLOOR - 4,
+          vx: side * rnd(80, 300) * (R / 15), vy: -rnd(260, 520) * (R / 15),
+          r: rnd(2.4, 4.6), fy: FLOOR + z * 10, landed: false, life: 0 });
+      }
+      bits.push({ el: mk("ellipse"), x: TX, y: FLOOR - 6, vx: rnd(-12, 12), vy: -rnd(330, 400), r: 5.6, fy: FLOOR, landed: false, life: 0, jet: true });
+    }
+
+    function startFlood() {
+      if (S.flooding) return;
+      S.flooding = true;
+      S.target = 100; S.shown = 100;
       if (cnt) cnt.textContent = "100";
-      var wait = Math.max(120, 900 - (performance.now() - t0));
+      var r = svg ? svg.getBoundingClientRect() : { left: innerWidth / 2 - 200, top: innerHeight / 2 - 300, width: 400 };
+      var k = r.width / 400, px = r.left + TX * k, py = r.top + FLOOR * k;
+      var reach = Math.hypot(Math.max(px, innerWidth - px), Math.max(py, innerHeight - py));
+      var s0 = Math.max(0.05, (S.poolR * 2 * k) / 100), s1 = (reach * 2.25) / 100;
+      flood.style.left = px + "px"; flood.style.top = py + "px";
+      flood.style.transition = "none";
+      flood.style.transform = "scale(" + s0 + ",  " + (s0 * 0.4) + ")";
+      void flood.offsetWidth;
+      flood.style.transition = "transform .78s cubic-bezier(.62,0,.32,1)";
+      flood.style.transform = "scale(" + s1 + ") rotate(35deg)";
+      S.poolT = 140; S.poolV += 400;
       setTimeout(function () {
+        S.done = true;
         el.classList.add("is-out");
         document.documentElement.classList.add("is-loaded");
-        setTimeout(startIntro, 380);
-        setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 1600);
-      }, wait);
+        startIntro();
+        setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 700);
+      }, 760);
     }
-    var last = performance.now();
-    function step(nowMs) {
-      if (done) return;
-      var dt = Math.min(0.1, ((nowMs || performance.now()) - last) / 1000); last = nowMs || performance.now();
-      shown += (target - shown) * (1 - Math.exp(-dt * 6));
-      if (cnt) cnt.textContent = String(Math.round(shown)).padStart(3, "0");
-      if (target >= 100 && shown > 99.4) { finish(); return; }
-      requestAnimationFrame(step);
+
+    function frame(nowMs) {
+      if (S.done) return false;
+      var dt = Math.min(0.033, (nowMs - S.last) / 1000); S.last = nowMs;
+      S.t += dt; S.pt += dt;
+      var t = S.t;
+
+      // Contador
+      if (!S.flooding) {
+        S.shown += (S.target - S.shown) * (1 - Math.exp(-dt * 5));
+        if (cnt) cnt.textContent = String(Math.round(S.shown)).padStart(3, "0");
+      }
+
+      // Aguja: entra, vibra como una máquina y se retira al final
+      var inK = Math.min(1, t / 0.45), ease = 1 - Math.pow(1 - inK, 3);
+      if (S.flooding) S.needleOut = Math.min(1, S.needleOut + dt / 0.35);
+      var ny = -520 * (1 - ease) - 560 * S.needleOut * S.needleOut + Math.sin(t * 96) * 0.7;
+      if (needle) needle.setAttribute("transform", "translate(0 " + ny.toFixed(2) + ")");
+      var ty = TY + ny;
+
+      // Gota en la punta (muelle amortiguado tras cada desprendimiento)
+      S.beadV += ((3.2 - S.beadR) * 190 - S.beadV * 11) * dt;
+      S.beadR += S.beadV * dt;
+      at(bead, { cx: TX, cy: ty + 1.5, r: inK < 0.9 ? 0 : Math.max(0, S.beadR) });
+
+      // Máquina de estados de la gota
+      if (S.phase === "wait" && S.pt > (S.landed ? 0.1 : 0.5) && !S.flooding) { S.phase = "form"; S.pt = 0; S.R = rnd(14.5, 17); }
+      if (S.phase === "form") {
+        var g = Math.min(1, S.pt / S.form), eg = 1 - Math.pow(1 - g, 2.2);
+        S.r = S.R * (0.12 + 0.88 * eg) * (1 + 0.035 * Math.sin(S.pt * 22));
+        S.y = ty - 1 + S.r * 0.96 + 18 * g * g * g;
+        var top = S.y - S.r * 0.7;
+        for (i = 0; i < neck.length; i++) {
+          var f = (i + 1) / (neck.length + 1);
+          var nr = Math.max(0, (4.4 - 3.4 * g * g) * (1 - f * 0.22) + (f > 0.75 ? S.r * 0.22 * g : 0));
+          at(neck[i], { cx: TX, cy: ty + (top - ty) * f, r: nr });
+        }
+        at(drop, { cx: TX, cy: S.y, rx: S.r, ry: S.r * (1 + 0.12 * g) });
+        if (g >= 1) { S.phase = "fall"; S.pt = 0; S.vy = 60; S.neckRet = 0; S.beadR += 3.2; }
+      } else if (S.phase === "fall") {
+        S.vy += G * dt; S.y += S.vy * dt;
+        var st = 1 + Math.min(0.32, S.vy / 2800), rx = S.r / Math.sqrt(st), ry = S.r * st;
+        at(drop, { cx: TX, cy: S.y, rx: rx, ry: ry });
+        var near = Math.max(0, Math.min(1, (S.y - TY) / (FLOOR - TY)));
+        if (shadow) at(shadow, { rx: 4 + 14 * near, ry: 1.5 + 3 * near, opacity: 0.25 + 0.75 * near });
+        if (S.y + ry >= FLOOR - 1) {
+          S.phase = "splat"; S.pt = 0;
+          S.poolT = Math.min(96, S.poolT + S.R * 2.5); S.poolV += 340 + S.R * 8;
+          spawnSplash(S.R);
+          S.landed++;
+          if (shadow) at(shadow, { rx: 0, ry: 0 });
+          if (S.landed >= 2 && S.loaded) setTimeout(startFlood, 180);
+        }
+      } else if (S.phase === "splat") {
+        var q = Math.min(1, S.pt / 0.11);
+        at(drop, { cx: TX, cy: FLOOR - S.r * 0.3 * (1 - q), rx: S.r * (1 + 1.6 * q), ry: Math.max(0.01, S.r * (1 - 0.82 * q)) });
+        if (q >= 1) { at(drop, { rx: 0, ry: 0 }); S.phase = "wait"; S.pt = 0; S.form = 0.4; }
+      }
+      // Cuello que se recoge hacia la aguja tras romperse
+      if (S.phase !== "form") {
+        S.neckRet = Math.min(1, S.neckRet + dt / 0.2);
+        for (i = 0; i < neck.length; i++) {
+          var fr = (i + 1) / (neck.length + 1), back = 1 - S.neckRet;
+          at(neck[i], { cx: TX, cy: ty + 4 + 30 * fr * back, r: Math.max(0, 3.4 * back * (1 - fr * 0.35)) });
+        }
+      }
+
+      // Charco: muelle con rebote + mancha que se empapa en el papel
+      S.poolV += ((S.poolT - S.poolR) * 120 - S.poolV * 13) * dt;
+      S.poolR = Math.max(0, S.poolR + S.poolV * dt);
+      at(pool, { cx: TX, cy: FLOOR + 1, rx: S.poolR, ry: S.poolR * 0.24 + (S.poolR > 1 ? 2.6 : 0) });
+      S.bleedR += (S.poolR * 1.22 - S.bleedR) * Math.min(1, dt * 1.6);
+      if (bleed) at(bleed, { rx: S.bleedR, ry: S.bleedR * 0.27 });
+
+      // Corona de salpicadura
+      for (i = 0; i < bits.length; i++) {
+        var b = bits[i];
+        b.life += dt;
+        if (!b.landed) {
+          b.vy += G * 0.9 * dt; b.x += b.vx * dt; b.y += b.vy * dt;
+          var s2 = 1 + Math.min(0.5, Math.abs(b.vy) / 1400);
+          at(b.el, { cx: b.x, cy: b.y, rx: b.r / Math.sqrt(s2), ry: b.r * s2 * (b.jet ? 1.5 : 1) });
+          if (b.vy > 0 && b.y >= b.fy) { b.landed = true; b.y = b.fy; at(b.el, { cy: b.fy, rx: b.r * 1.5, ry: b.r * 0.7 }); if (b.jet) at(b.el, { rx: 0, ry: 0 }); }
+        }
+      }
+      return true;
     }
-    requestAnimationFrame(step);
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { target = Math.max(target, 75); });
-    function go() { target = 100; }
+
+    Ticker.add(frame);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { S.target = Math.max(S.target, 72); });
+    function go() { S.loaded = true; S.target = Math.max(S.target, 92); if (S.landed >= 2) setTimeout(startFlood, 120); }
     if (document.readyState === "complete") go(); else window.addEventListener("load", go, { once: true });
     setTimeout(go, 2600);
-    setTimeout(finish, 4000);
+    setTimeout(startFlood, 3400);
   }
 
   function startIntro() {

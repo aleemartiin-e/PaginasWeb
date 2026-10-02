@@ -199,41 +199,49 @@ html.has-fine .cursor { display: block; }
 }
 html.has-cursor, html.has-cursor * { cursor: none !important; }
 
-/* ---- Splash ---- */
+/* ---- Splash: aguja, gotas de tinta reales e inundación ---- */
 .splash {
   position: fixed; inset: 0; z-index: 9000;
-  display: grid; place-items: center; align-content: center; gap: 28px;
-  background: var(--ink);
-  transition: clip-path .9s var(--ease-in), opacity .3s .7s;
-  clip-path: inset(0 0 0 0);
-  animation: splashSafety .01s 4.5s forwards;
+  display: grid; place-items: center;
+  background: var(--paper);
+  color: var(--paper-ink);
+  overflow: hidden;
+  transition: opacity .45s var(--ease-out);
+  animation: splashSafety .01s 4.6s forwards;
 }
-.splash.is-out { clip-path: inset(0 0 100% 0); opacity: 0; pointer-events: none; }
-@keyframes splashSafety { to { clip-path: inset(0 0 100% 0); opacity: 0; pointer-events: none; } }
-.splash-needle {
-  position: relative; width: 1px; height: 26vh;
-  background: linear-gradient(var(--bone-3), var(--bone));
-  transform-origin: top;
-  animation: needleIn .9s var(--ease-out) both;
+html:not(.js) .splash { display: none; }
+.splash::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45  0 0 0 0 0.43  0 0 0 0 0.4  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.splash-drop {
-  position: absolute; left: 50%; bottom: -9px;
-  width: 14px; height: 18px; margin-left: -7px;
-  background: var(--blue);
-  border-radius: 50% 50% 50% 50% / 62% 62% 40% 40%;
-  transform-origin: top center;
-  animation: dropGrow 1.4s .4s var(--ease-out) both;
+.splash.is-out { opacity: 0; pointer-events: none; }
+@keyframes splashSafety { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+.splash-stage { position: relative; display: grid; justify-items: center; }
+.splash-ink {
+  width: min(400px, 86vw, 49vh); height: auto;
+  overflow: visible;
 }
-.splash.is-out .splash-drop { animation: dropFall .7s var(--ease-in) forwards; }
-@keyframes needleIn { from { transform: scaleY(0); } }
-@keyframes dropGrow { from { transform: scale(0); } }
-@keyframes dropFall { to { transform: translateY(60vh) scaleY(1.6); } }
+.ink-goo { fill: #0b0b0e; }
+.ink-bleed { fill: rgba(17, 17, 22, 0.26); }
+.ink-shadow { fill: rgba(17, 17, 19, 0.28); }
 .splash-count {
-  font-family: var(--display); font-weight: 800; font-size: 3.4rem; line-height: 1;
-  display: flex; align-items: baseline; gap: .5rem;
+  position: absolute; left: 50%; bottom: 4%;
+  transform: translateX(-50%);
+  display: flex; align-items: baseline; gap: .45rem;
+  font-family: var(--display); font-weight: 800; font-size: clamp(2.2rem, 5vh, 3.2rem); line-height: 1;
   font-variant-numeric: tabular-nums;
+  color: var(--paper-ink);
 }
-.splash-count small { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--bone-3); font-weight: 400; }
+.splash-count small { font-family: var(--mono); font-size: 11px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: rgba(17, 17, 19, .55); }
+.splash-flood {
+  position: fixed; left: 0; top: 0;
+  width: 100px; height: 100px; margin: -50px 0 0 -50px;
+  background: var(--ink);
+  border-radius: 47% 53% 44% 56% / 54% 45% 55% 46%;
+  transform: scale(0);
+  pointer-events: none;
+  will-change: transform;
+}
 
 /* =============================================================
    5. Sections
